@@ -5,7 +5,7 @@ const router = require("./routes");
 const { sequelize } = require("./models/index");
 const cookieParser = require("cookie-parser");
 const app = express();
-const port = 5005;
+
 
 //chuyển req, res về json
 app.use(express.json());
@@ -15,7 +15,7 @@ app.use(cors())
 
 app.use("/api", router);
 
-app.listen(port, async () => {
+app.listen(process.env.PORT ||3000, async () => {
   try {
     await sequelize.authenticate();
     console.log("Connection has been established successfully.");
